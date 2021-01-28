@@ -1,0 +1,18 @@
+$font-size: 1.125rem;
+$button-background-color: #00ff00;
+$button-font-color: #333333;
+$text-font-color: #b31500;
+
+.hello-world-button {
+    font-size: $font-size;
+    padding: .5rem 1rem;
+    background: $button-background-color;
+    border-radius: .5rem;
+    color: $button-font-color;
+    outline: none;
+}
+.hello-world-text {
+    color: $text-font-color;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
