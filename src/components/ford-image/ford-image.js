@@ -9,7 +9,7 @@ class FordImage {
         img.alt = 'Ford Capri'
         img.classList.add('ford-image');
 
-        const bodyDomElement = document.querySelector('body');
+        const bodyDomElement = document.querySelector('.crab-wrapper');
         bodyDomElement.appendChild(img);
     }
 }

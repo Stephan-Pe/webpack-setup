@@ -1,11 +1,12 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
     entry: {
-        'hello-world': './src/hello-world.js',
-        'ford': './src/ford.js'
+        'index': './src/index.js',
+        'about': './src/about.js'
     },
     output: {
         filename: "[name].bundle.js",
@@ -16,14 +17,14 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, "./dist"),
         index: 'index.html',
-        port: 9000,
+        port: 9002,
         writeToDisk: true
     },
     module: {
         rules: [
             {
-                test: /\.(png|jpg)$/,
-                use: ["file-loader"],
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
             },
             {
                 test: /\.css$/,
@@ -53,24 +54,36 @@ module.exports = {
                 use: [
                     'handlebars-loader'
                 ]
+            },
+            {
+                test: /\.(woff2|woff|ttf)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/'
+                        }
+                    }
+                ]
             }
         ],
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            filename: 'hello-world.html',
-            chunks: ['hello-world'],
-            title: 'Hello World',
+            filename: 'index.html',
+            chunks: ['index'],
+            title: 'My Webpack',
             template: 'src/page-template.hbs',
-            description: 'Some description'
+            description: 'Project start'
         }),
         new HtmlWebpackPlugin({
-            filename: 'ford.html',
-            chunks: ['ford'],
-            title: 'Ford',
-            template: 'src/page-template.hbs',
-            description: 'Ford'
+            filename: 'about.html',
+            chunks: ['about'],
+            title: 'About',
+            template: 'src/another-template.hbs',
+            description: 'About'
         })
-    ]
+    ],
 };

@@ -23,4 +23,5 @@ Wiherwäg 2
 
 
 
-# webpack-setup
+### Target
+- test the combination and usability of handlebars in webpack

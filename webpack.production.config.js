@@ -1,12 +1,13 @@
 const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
   entry: {
-    'hello-world': './src/hello-world.js',
-    'ford': './src/ford.js'
+    'index': './src/index.js',
+    'about': './src/about.js'
   },
   output: {
     filename: "[name].[contenthash].js",
@@ -23,8 +24,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpg)$/,
-        use: ["file-loader"],
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
       {
           test: /\.css$/,
@@ -54,6 +55,18 @@ module.exports = {
         use: [
           'handlebars-loader'
         ]
+      },
+      {
+        test: /\.(woff2|woff|ttf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
       }
     ],
   },
@@ -68,21 +81,21 @@ module.exports = {
       ]
     }),
     new HtmlWebpackPlugin({
-      filename: 'hello-world.html',
-      chunks: ['hello-world'],
-      title: 'Hello World',
+      filename: 'index.html',
+      chunks: ['index'],
+      title: 'Index',
       //filename: 'subfolder/custom_filename.html', // options listed on GitHub
       template: 'src/page-template.hbs',
       description: 'Some description',
       minify: true
     }),
     new HtmlWebpackPlugin({
-      filename: 'ford.html',
-      chunks: ['ford'],
-      title: 'Ford',
+      filename: 'about.html',
+      chunks: ['about'],
+      title: 'About',
       //filename: 'subfolder/custom_filename.html', // options listed on GitHub
       template: 'src/page-template.hbs',
-      description: 'Ford',
+      description: 'About',
       minify: true
     })
   ]

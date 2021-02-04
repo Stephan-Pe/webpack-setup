@@ -1,18 +1,39 @@
-$font-size: 1.125rem;
-$button-background-color: #00ff00;
-$button-font-color: #333333;
-$text-font-color: #b31500;
+$font-size: 1.25rem;
+$button-background-color: #006bb3;
+$button-font-color: #ffffff;
+$text-font-color: #333333;
+$container-background-color: burlywood;
+$borderRadius: 0.5rem;
 
 .hello-world-button {
-    font-size: $font-size;
-    padding: .5rem 1rem;
-    background: $button-background-color;
-    border-radius: .5rem;
-    color: $button-font-color;
-    outline: none;
+  font-size: $font-size;
+  padding: 0.5rem 1rem;
+  background: $button-background-color;
+  border-radius: $borderRadius;
+  color: $button-font-color;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+.hello-world-button:hover,
+.hello-world-button:focus {
+  background: #ff6666;
 }
 .hello-world-text {
-    color: $text-font-color;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
+  color: $text-font-color;
+  font-size: 1.125rem;
+  font-family: "Roboto";
+  font-weight: bold;
+}
+.button-container {
+  display: flex;
+  align-items: baseline;
+  border-radius: $borderRadius;
+  padding: 2rem 0.5rem;
+  background-color: $container-background-color;
+  span {
+    margin-left: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
 }

@@ -1,0 +1,154 @@
+@mixin media($device) {
+    @if $device == 'tablet'{
+    @media screen 
+        and (min-width: 768px) {
+            @content;  
+        }
+    }
+    @if $device == 'desktop'{
+        @media screen 
+        and (min-width: 1040px) { 
+            @content;  
+        }
+    }
+}
+.header {
+  width: 100%;
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__icon {
+    cursor: pointer;
+    width: 36%;
+    border-top-left-radius: 35%;
+    border-bottom-right-radius: 35%;
+    filter: drop-shadow(0.125rem 0.125rem 0.125rem gray);
+    a::after {
+      background-color: transparent;
+    }
+  }
+  &__site--navigation {
+    display: flex;
+    justify-content: center;
+    transform: scale(1, 0);
+    opacity: 0;
+    transform-origin: top;
+    width: 100%;
+    height: 0;
+    transition: transform 600ms ease, height 600ms linear, opacity 300ms ease;
+  }
+  &__site--navigation.open {
+    transform: scale(1, 1);
+    opacity: 1;
+    transition: transform 600ms ease, height 600ms ease-out,
+      opacity 500ms ease 400ms;
+    height: 60vh;
+  }
+}
+.hamburger__container {
+  width: 80px;
+  height: 50px;
+}
+#hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  span {
+    display: block;
+    width: 3rem;
+    height: .3rem;
+    background-color: darkblue;
+
+  }
+  cursor: pointer;
+}
+@include media ('desktop') {
+  .hamburger__container {
+  width: 100px;
+  height: 70px;
+}
+#hamburger span {
+  width: 4rem;
+  height: .4rem;
+}
+}
+
+nav {
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style-type: none;
+    height: 100%;
+    width: 100%;
+    li {
+      position: relative;
+      a {
+        color: darkslategray;
+        font-size: 2.2rem;
+        font-weight: 600;
+        text-shadow: 0.125rem 0.025rem 0.2rem darkslategray;
+        text-decoration: none;
+      }
+    }
+  }
+}
+@include media("tablet") {
+  .header {
+    &__icon {
+      width: 25%;
+    }
+    &__site--navigation.open {
+      height: 12vh;
+    }
+  }
+
+  nav {
+    margin-top: 2rem !important;
+  }
+  nav ul {
+    flex-direction: row;
+    align-items: center;
+    li {
+      a {
+        font-size: 1.8rem;
+        margin: 0 1rem;
+      }
+    }
+  }
+  #hamburger {
+    font-size: 5rem;
+  }
+}
+@include media("desktop") {
+  .header {
+    &__icon {
+      width: 20%;
+    }
+  }
+  #hamburger {
+    font-size: 6rem;
+  }
+  nav {
+    width: 100%;
+
+    ul {
+      width: 100%;
+      justify-content: space-around;
+      li {
+        display: flex;
+        justify-content: center;
+      }
+      li a {
+        padding: 12px;
+        font-size: 2rem;
+      }
+
+    }
+  }
+}

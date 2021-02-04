@@ -1,0 +1,48 @@
+@import "scss/fonts";
+@import "scss/navigation";
+@import "scss/logo";
+
+html {
+  body {
+    font-family: "Roboto", "sans-serif";
+  }
+}
+.crab-wrapper {
+  width: 80%;
+  margin: auto;
+}
+.lead {
+  width: 80%;
+  margin: auto;
+  h1 {
+    color: cadetblue;
+    font-weight: 300;
+    font-size: 2.6rem;
+  }
+}
+.content {
+  width: 80%;
+  margin: auto;
+  background-color: cadetblue;
+  padding: 2rem;
+  box-sizing: border-box;
+  p {
+    line-height: 2;
+    color: white;
+  }
+}
+.footer {
+  width: 80%;
+  margin: auto;
+  background-color: black;
+  color: white;
+  &__text {
+    min-height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  a {
+    color: white;
+  }
+}
